@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bashar Al-Saleh — Portfolio</title>
+<meta name="description" content="Bashar Al-Saleh — Backend Developer. Node.js, NestJS, Prisma, PostgreSQL.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #1b1c1e;
+    --bg-card: #232428;
+    --bg-terminal: #17181a;
+    --text: #e8e6e1;
+    --text-muted: #8b8d91;
+    --accent-amber: #e8a33d;
+    --accent-green: #6fa787;
+    --accent-red: #c9695f;
+    --border: #313236;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--accent-amber);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  .wrap{ max-width:920px; margin:0 auto; padding:0 24px; }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(27,28,30,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  header .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .logo{ font-family:var(--mono); font-size:15px; }
+  .logo span{ color:var(--text-muted); }
+  .logo strong{ color:var(--accent-amber); font-weight:600; }
+  nav ul{ list-style:none; display:flex; gap:28px; }
+  nav a{ font-size:14px; color:var(--text-muted); transition:color .2s; }
+  nav a:hover{ color:var(--accent-amber); }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding:90px 0 60px; }
+  .terminal{
+    background:var(--bg-terminal);
+    border:1px solid var(--border);
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 20px 60px -20px rgba(0,0,0,0.6);
+  }
+  .terminal-bar{
+    display:flex; align-items:center; gap:8px;
+    padding:12px 16px;
+    background:#1f2022;
+    border-bottom:1px solid var(--border);
+  }
+  .dot{ width:11px; height:11px; border-radius:50%; }
+  .dot.red{ background:#c9695f; }
+  .dot.amber{ background:#e8a33d; }
+  .dot.green{ background:#6fa787; }
+  .terminal-title{
+    margin-left:12px;
+    font-family:var(--mono); font-size:12px; color:var(--text-muted);
+  }
+  .terminal-body{
+    padding:28px 24px;
+    font-family:var(--mono);
+    font-size:15px;
+    min-height:190px;
+  }
+  .terminal-body .line{ margin-bottom:14px; }
+  .prompt{ color:var(--accent-green); }
+  .cmd{ color:var(--text); }
+  .out{ color:var(--accent-amber); font-weight:600; }
+  .cursor{
+    display:inline-block; width:8px; height:16px;
+    background:var(--accent-amber);
+    margin-left:4px;
+    animation:blink 1s steps(1) infinite;
+    vertical-align:middle;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .hero-note{
+    margin-top:22px; color:var(--text-muted); font-size:14px; text-align:center;
+  }
+
+  /* ---------- Section headings ---------- */
+  section{ padding:70px 0; border-top:1px solid var(--border); }
+  .section-head{ margin-bottom:36px; }
+  .section-eyebrow{
+    font-family:var(--mono); font-size:12px; color:var(--accent-green);
+    display:block; margin-bottom:6px;
+  }
+  .section-title{ font-size:26px; font-weight:700; }
+
+  /* ---------- About ---------- */
+  .about p{ color:var(--text-muted); max-width:640px; font-size:16px; }
+  .about p + p{ margin-top:14px; }
+  .skills{ display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+  .skill-tag{
+    font-family:var(--mono); font-size:13px;
+    padding:6px 12px; border:1px solid var(--border); border-radius:6px;
+    color:var(--text-muted);
+  }
+
+  /* ---------- Projects (git log style) ---------- */
+  .git-log{ position:relative; }
+  .commit{
+    position:relative;
+    display:grid;
+    grid-template-columns:28px 1fr;
+    gap:20px;
+    padding-bottom:36px;
+  }
+  .commit:last-child{ padding-bottom:0; }
+  .graph{ position:relative; display:flex; justify-content:center; }
+  .graph::before{
+    content:'';
+    position:absolute;
+    top:26px; bottom:-36px;
+    width:2px;
+    background:var(--border);
+  }
+  .commit:last-child .graph::before{ display:none; }
+  .node{
+    width:14px; height:14px; border-radius:50%;
+    background:var(--bg);
+    border:2px solid var(--accent-green);
+    margin-top:6px;
+    z-index:1;
+  }
+  .commit-card{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:22px;
+    transition:border-color .2s, transform .2s;
+  }
+  .commit-card:hover{ border-color:var(--accent-amber); transform:translateY(-2px); }
+  .commit-meta{
+    font-family:var(--mono); font-size:12px; color:var(--text-muted);
+    margin-bottom:10px;
+  }
+  .commit-meta .hash{ color:var(--accent-amber); }
+  .commit-title{ font-size:19px; font-weight:700; margin-bottom:8px; }
+  .commit-desc{ color:var(--text-muted); font-size:15px; margin-bottom:16px; }
+  .commit-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+  .commit-tags span{
+    font-family:var(--mono); font-size:12px;
+    padding:4px 10px; border-radius:5px;
+    background:rgba(111,167,135,0.12); color:var(--accent-green);
+  }
+  .commit-link{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:var(--mono); font-size:13px; color:var(--accent-amber);
+    border-bottom:1px solid transparent;
+  }
+  .commit-link:hover{ border-bottom-color:var(--accent-amber); }
+
+  /* ---------- Contact ---------- */
+  .contact-terminal{ font-family:var(--mono); font-size:15px; }
+  .contact-terminal .line{ margin-bottom:10px; }
+  .contact-terminal a{ color:var(--accent-amber); }
+  .contact-terminal a:hover{ text-decoration:underline; }
+  .contact-key{ color:var(--text-muted); display:inline-block; width:96px; }
+
+  footer{
+    border-top:1px solid var(--border);
+    padding:26px 0; text-align:center;
+    color:var(--text-muted); font-size:13px; font-family:var(--mono);
+  }
+
+  @media (max-width:640px){
+    .hero{ padding:60px 0 40px; }
+    .terminal-body{ font-size:13px; padding:20px 16px; }
+    .section-title{ font-size:22px; }
+    .commit{ grid-template-columns:20px 1fr; gap:14px; }
+    .node{ width:11px; height:11px; }
+    nav ul{ gap:16px; }
+    .contact-key{ width:80px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo"><span>~/</span><strong>bashar</strong></div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ============ Hero ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="dot red"></span><span class="dot amber"></span><span class="dot green"></span>
+          <span class="terminal-title">bash — ~/portfolio</span>
+        </div>
+        <div class="terminal-body" id="termBody"></div>
+      </div>
+      <p class="hero-note">Scroll down for my projects — each one links straight to its GitHub repo.</p>
+    </div>
+  </section>
+
+  <!-- ============ About ============ -->
+  <section id="about" class="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-eyebrow">$ cat about.md</span>
+        <h2 class="section-title">About</h2>
+      </div>
+      <p>I'm a backend developer and Informatics Engineering graduate, currently deepening my knowledge of software architecture — patterns, layering, and how to design systems that hold up as they grow.</p>
+      <p>I like building systems that stay stable under real conditions and code that's still easy to read months later. I'm always looking for new tools, patterns, and ideas worth learning.</p>
+      <div class="skills">
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">Express</span>
+        <span class="skill-tag">NestJS</span>
+        <span class="skill-tag">Prisma</span>
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Git</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Projects ============ -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-eyebrow">$ git log --oneline --graph</span>
+        <h2 class="section-title">Projects</h2>
+      </div>
+      <div class="git-log" id="gitLog"></div>
+    </div>
+  </section>
+
+  <!-- ============ Contact ============ -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-eyebrow">$ cat contact.txt</span>
+        <h2 class="section-title">Contact</h2>
+      </div>
+      <div class="contact-terminal">
+        <div class="line"><span class="contact-key">GitHub</span>→ <a href="https://github.com/Bashar-m" target="_blank" rel="noopener">github.com/Bashar-m</a></div>
+        <div class="line"><span class="contact-key">LinkedIn</span>→ <a href="https://www.linkedin.com/in/bashar-alsaleh" target="_blank" rel="noopener">linkedin.com/in/bashar-alsaleh</a></div>
+        <div class="line"><span class="contact-key">Email</span>→ <a href="mailto:eng.bashar75@gmail.com">eng.bashar75@gmail.com</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> Bashar Al-Saleh — built with HTML, CSS & JS
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ============================================================
+     Edit only this array to update your projects.
+     Order = display order (top to bottom).
+     ============================================================ */
+  const projects = [
+    {
+      hash: "4f2a9c1",
+      title: "Pro Portfolio Service",
+      desc: "An enterprise-style backend for managing company portfolios. Built with NestJS and Prisma around a custom core library, with a dedicated auth system and centralized exception handling.",
+      tags: ["NestJS", "Prisma", "TypeScript", "REST API"],
+      link: "https://github.com/Bashar-m/Pro-Portfolio-Service"
+    },
+    {
+      hash: "9d3e7b0",
+      title: "Task Manager API",
+      desc: "A task management backend designed around modularity and clean architecture. Uses Redis for caching, background job queues, and ships with Docker for easy deployment.",
+      tags: ["Node.js", "Express", "MongoDB", "Redis", "Docker"],
+      link: "https://github.com/Bashar-m/task-manager-api"
+    },
+    {
+      hash: "2c8f1a4",
+      title: "E-Commerce API",
+      desc: "A full REST API for an online store, with routes, services and models kept in separate layers, plus JWT-based authentication for protected endpoints.",
+      tags: ["Node.js", "Express", "MongoDB", "JWT"],
+      link: "https://github.com/Bashar-m/ecommerce-api"
+    },
+    {
+      hash: "7b1d4e6",
+      title: "Real Estate API",
+      desc: "A REST API for managing property listings, including image uploads and scheduled background jobs for recurring maintenance tasks.",
+      tags: ["Node.js", "Express", "MongoDB"],
+      link: "https://github.com/Bashar-m/real-estate-api"
+    }
+    // Add more projects the same way
+  ];
+
+  const gitLog = document.getElementById('gitLog');
+  projects.forEach(p => {
+    const commit = document.createElement('div');
+    commit.className = 'commit';
+    commit.innerHTML = `
+      <div class="graph"><div class="node"></div></div>
+      <div class="commit-card">
+        <div class="commit-meta"><span class="hash">commit ${p.hash}</span></div>
+        <div class="commit-title">${p.title}</div>
+        <div class="commit-desc">${p.desc}</div>
+        <div class="commit-tags">${p.tags.map(t => `<span>${t}</span>`).join('')}</div>
+        <a class="commit-link" href="${p.link}" target="_blank" rel="noopener">→ View on GitHub</a>
+      </div>
+    `;
+    gitLog.appendChild(commit);
+  });
+
+  /* ---------- Hero typing effect ---------- */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const termBody = document.getElementById('termBody');
+  const heroLines = [
+    { prompt: '$ ', cmd: 'whoami', out: 'Bashar Al-Saleh' },
+    { prompt: '$ ', cmd: 'cat role.txt', out: 'Backend Developer · Informatics Engineering Graduate' },
+    { prompt: '$ ', cmd: 'cat currently-learning.txt', out: 'Software Architecture' },
+    { prompt: '$ ', cmd: './explore-portfolio.sh', out: null }
+  ];
+
+  function renderStatic(){
+    termBody.innerHTML = heroLines.map(l => {
+      let html = `<div class="line"><span class="prompt">${l.prompt}</span><span class="cmd">${l.cmd}</span></div>`;
+      if(l.out) html += `<div class="line out">${l.out}</div>`;
+      return html;
+    }).join('') + '<span class="cursor"></span>';
+  }
+
+  async function typeLine(container, text, speed){
+    for(let i=0;i<=text.length;i++){
+      container.textContent = text.slice(0,i);
+      await new Promise(r => setTimeout(r, speed));
+    }
+  }
+
+  async function typeHero(){
+    for(const l of heroLines){
+      const cmdLine = document.createElement('div');
+      cmdLine.className = 'line';
+      const promptSpan = document.createElement('span');
+      promptSpan.className = 'prompt';
+      promptSpan.textContent = l.prompt;
+      const cmdSpan = document.createElement('span');
+      cmdSpan.className = 'cmd';
+      cmdLine.appendChild(promptSpan);
+      cmdLine.appendChild(cmdSpan);
+      termBody.appendChild(cmdLine);
+      await typeLine(cmdSpan, l.cmd, 45);
+      await new Promise(r => setTimeout(r, 250));
+      if(l.out){
+        const outLine = document.createElement('div');
+        outLine.className = 'line out';
+        termBody.appendChild(outLine);
+        await typeLine(outLine, l.out, 20);
+        await new Promise(r => setTimeout(r, 300));
+      }
+    }
+    const cursor = document.createElement('span');
+    cursor.className = 'cursor';
+    termBody.appendChild(cursor);
+  }
+
+  if(reduceMotion){
+    renderStatic();
+  } else {
+    typeHero();
+  }
+</script>
+
+</body>
+</html>

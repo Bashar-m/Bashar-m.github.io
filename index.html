@@ -3,29 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bashar Al-Saleh — Portfolio</title>
-<meta name="description" content="Bashar Al-Saleh — Backend Developer. Node.js, NestJS, Prisma, PostgreSQL.">
+<title>Bashar Al-Saleh — Backend Developer</title>
+<meta name="description" content="Bashar Al-Saleh — Backend Developer. Node.js, NestJS, Prisma, PostgreSQL. Building APIs that stay stable under real conditions.">
+<meta property="og:title" content="Bashar Al-Saleh — Backend Developer">
+<meta property="og:description" content="Node.js · NestJS · Prisma · PostgreSQL — APIs built to hold up as they grow.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#17181a">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>▸</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Bashar Al-Saleh",
+  "jobTitle": "Backend Developer",
+  "email": "mailto:eng.bashar75@gmail.com",
+  "url": "https://github.com/Bashar-m",
+  "sameAs": ["https://github.com/Bashar-m", "https://www.linkedin.com/in/bashar-alsaleh"]
+}
+</script>
 <style>
   :root{
     --bg: #1b1c1e;
     --bg-card: #232428;
     --bg-terminal: #17181a;
+    --bg-raise: #2a2b30;
     --text: #e8e6e1;
-    --text-muted: #8b8d91;
+    --text-muted: #9a9ca1;
+    --text-dim: #6f7176;
     --accent-amber: #e8a33d;
+    --accent-amber-soft: rgba(232,163,61,0.12);
     --accent-green: #6fa787;
+    --accent-green-soft: rgba(111,167,135,0.12);
     --accent-red: #c9695f;
     --border: #313236;
-    --mono: 'IBM Plex Mono', monospace;
-    --sans: 'Inter', sans-serif;
+    --border-hover: #45464b;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --sans: 'Inter', system-ui, sans-serif;
   }
 
   *{ margin:0; padding:0; box-sizing:border-box; }
 
-  html{ scroll-behavior:smooth; }
+  html{ scroll-behavior:smooth; scroll-padding-top:80px; }
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
     *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
@@ -38,6 +59,17 @@
     line-height:1.7;
     overflow-x:hidden;
   }
+  ::selection{ background:var(--accent-amber); color:#1b1c1e; }
+
+  body::before{
+    content:'';
+    position:fixed; inset:0;
+    background-image:radial-gradient(circle at 1px 1px, rgba(232,230,225,0.035) 1px, transparent 0);
+    background-size:28px 28px;
+    pointer-events:none;
+    z-index:0;
+  }
+  main, header, footer{ position:relative; z-index:1; }
 
   a{ color:inherit; text-decoration:none; }
   a:focus-visible, button:focus-visible{
@@ -45,35 +77,113 @@
     outline-offset:3px;
     border-radius:2px;
   }
+  .skip-link{
+    position:absolute; left:-9999px; top:0;
+    background:var(--accent-amber); color:#1b1c1e;
+    padding:10px 18px; font-weight:600; z-index:100; border-radius:0 0 8px 0;
+  }
+  .skip-link:focus{ left:0; }
 
-  .wrap{ max-width:920px; margin:0 auto; padding:0 24px; }
+  .wrap{ max-width:960px; margin:0 auto; padding:0 24px; }
 
   /* ---------- Header ---------- */
   header{
     position:sticky; top:0; z-index:50;
-    background:rgba(27,28,30,0.85);
-    backdrop-filter:blur(8px);
+    background:rgba(23,24,26,0.82);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
     border-bottom:1px solid var(--border);
   }
   header .wrap{
     display:flex; align-items:center; justify-content:space-between;
-    height:64px;
+    height:60px;
   }
-  .logo{ font-family:var(--mono); font-size:15px; }
-  .logo span{ color:var(--text-muted); }
+  .logo{ font-family:var(--mono); font-size:15px; display:flex; align-items:center; gap:2px; }
+  .logo span{ color:var(--text-dim); }
   .logo strong{ color:var(--accent-amber); font-weight:600; }
-  nav ul{ list-style:none; display:flex; gap:28px; }
-  nav a{ font-size:14px; color:var(--text-muted); transition:color .2s; }
-  nav a:hover{ color:var(--accent-amber); }
+  .logo::after{
+    content:''; width:8px; height:15px; margin-left:5px;
+    background:var(--accent-amber);
+    animation:blink 1.2s steps(1) infinite;
+  }
+  nav ul{ list-style:none; display:flex; gap:6px; align-items:center; }
+  nav a{
+    font-family:var(--mono); font-size:13px; color:var(--text-muted);
+    padding:7px 12px; border-radius:6px;
+    transition:color .2s, background .2s;
+  }
+  nav a:hover{ color:var(--accent-amber); background:var(--accent-amber-soft); }
+  nav a.active{ color:var(--accent-amber); background:var(--accent-amber-soft); }
+  nav a.nav-cta{
+    color:#1b1c1e; background:var(--accent-amber); font-weight:600;
+    margin-left:8px;
+  }
+  nav a.nav-cta:hover{ background:#f0b355; color:#1b1c1e; }
 
   /* ---------- Hero ---------- */
-  .hero{ padding:90px 0 60px; }
+  .hero{ padding:80px 0 70px; }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1.05fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero-intro .status{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:12px; color:var(--accent-green);
+    border:1px solid rgba(111,167,135,0.35);
+    background:var(--accent-green-soft);
+    padding:5px 12px; border-radius:99px;
+    margin-bottom:22px;
+  }
+  .status .pulse{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--accent-green);
+    animation:pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ box-shadow:0 0 0 0 rgba(111,167,135,0.5); }
+    50%{ box-shadow:0 0 0 5px rgba(111,167,135,0); }
+  }
+  .hero-intro h1{
+    font-size:clamp(34px, 5vw, 46px);
+    font-weight:800;
+    letter-spacing:-0.02em;
+    line-height:1.15;
+    margin-bottom:14px;
+    text-wrap:balance;
+  }
+  .hero-intro h1 em{
+    font-style:normal; color:var(--accent-amber);
+  }
+  .hero-intro .sub{
+    color:var(--text-muted); font-size:16px; max-width:44ch; margin-bottom:28px;
+  }
+  .hero-intro .sub code{
+    font-family:var(--mono); font-size:14px; color:var(--accent-green);
+  }
+  .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:14px; font-weight:500;
+    padding:11px 20px; border-radius:8px;
+    border:1px solid var(--border);
+    transition:transform .2s, border-color .2s, background .2s;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{
+    background:var(--accent-amber); color:#1b1c1e; border-color:var(--accent-amber);
+    font-weight:600;
+  }
+  .btn-primary:hover{ background:#f0b355; }
+  .btn-ghost:hover{ border-color:var(--accent-amber); color:var(--accent-amber); }
+
   .terminal{
     background:var(--bg-terminal);
     border:1px solid var(--border);
-    border-radius:10px;
+    border-radius:12px;
     overflow:hidden;
-    box-shadow:0 20px 60px -20px rgba(0,0,0,0.6);
+    box-shadow:0 24px 70px -24px rgba(0,0,0,0.7), 0 0 0 1px rgba(232,163,61,0.04);
   }
   .terminal-bar{
     display:flex; align-items:center; gap:8px;
@@ -82,25 +192,26 @@
     border-bottom:1px solid var(--border);
   }
   .dot{ width:11px; height:11px; border-radius:50%; }
-  .dot.red{ background:#c9695f; }
-  .dot.amber{ background:#e8a33d; }
-  .dot.green{ background:#6fa787; }
+  .dot.red{ background:var(--accent-red); }
+  .dot.amber{ background:var(--accent-amber); }
+  .dot.green{ background:var(--accent-green); }
   .terminal-title{
-    margin-left:12px;
-    font-family:var(--mono); font-size:12px; color:var(--text-muted);
+    margin-left:10px;
+    font-family:var(--mono); font-size:12px; color:var(--text-dim);
   }
   .terminal-body{
-    padding:28px 24px;
+    padding:24px 22px;
     font-family:var(--mono);
-    font-size:15px;
-    min-height:190px;
+    font-size:14px;
+    min-height:210px;
   }
-  .terminal-body .line{ margin-bottom:14px; }
+  .terminal-body .line{ margin-bottom:12px; word-break:break-word; }
   .prompt{ color:var(--accent-green); }
   .cmd{ color:var(--text); }
   .out{ color:var(--accent-amber); font-weight:600; }
+  .out.plain{ color:var(--text-muted); font-weight:400; }
   .cursor{
-    display:inline-block; width:8px; height:16px;
+    display:inline-block; width:8px; height:15px;
     background:var(--accent-amber);
     margin-left:4px;
     animation:blink 1s steps(1) infinite;
@@ -108,28 +219,54 @@
   }
   @keyframes blink{ 50%{ opacity:0; } }
 
-  .hero-note{
-    margin-top:22px; color:var(--text-muted); font-size:14px; text-align:center;
-  }
-
-  /* ---------- Section headings ---------- */
-  section{ padding:70px 0; border-top:1px solid var(--border); }
-  .section-head{ margin-bottom:36px; }
+  /* ---------- Sections ---------- */
+  section{ padding:76px 0; border-top:1px solid var(--border); }
+  .section-head{ margin-bottom:40px; }
   .section-eyebrow{
-    font-family:var(--mono); font-size:12px; color:var(--accent-green);
-    display:block; margin-bottom:6px;
+    font-family:var(--mono); font-size:13px; color:var(--accent-green);
+    display:block; margin-bottom:8px;
   }
-  .section-title{ font-size:26px; font-weight:700; }
+  .section-eyebrow::before{ content:'$ '; color:var(--text-dim); }
+  .section-title{ font-size:28px; font-weight:700; letter-spacing:-0.01em; }
+
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.visible{ opacity:1; transform:none; }
 
   /* ---------- About ---------- */
-  .about p{ color:var(--text-muted); max-width:640px; font-size:16px; }
-  .about p + p{ margin-top:14px; }
-  .skills{ display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
-  .skill-tag{
-    font-family:var(--mono); font-size:13px;
-    padding:6px 12px; border:1px solid var(--border); border-radius:6px;
-    color:var(--text-muted);
+  .about-grid{
+    display:grid; grid-template-columns:1.4fr 1fr; gap:48px; align-items:start;
   }
+  .about p{ color:var(--text-muted); font-size:16px; }
+  .about p + p{ margin-top:16px; }
+  .about p strong{ color:var(--text); font-weight:600; }
+
+  .stack-card{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:22px;
+  }
+  .stack-card h3{
+    font-family:var(--mono); font-size:12px; font-weight:500;
+    color:var(--text-dim); text-transform:lowercase;
+    margin-bottom:14px;
+  }
+  .stack-card h3::before{ content:'# '; color:var(--accent-green); }
+  .stack-group{ margin-bottom:18px; }
+  .stack-group:last-child{ margin-bottom:0; }
+  .stack-label{
+    font-family:var(--mono); font-size:11px; color:var(--accent-amber);
+    display:block; margin-bottom:8px; letter-spacing:0.06em;
+  }
+  .skills{ display:flex; flex-wrap:wrap; gap:8px; }
+  .skill-tag{
+    font-family:var(--mono); font-size:12.5px;
+    padding:5px 11px; border:1px solid var(--border); border-radius:6px;
+    color:var(--text-muted);
+    transition:border-color .2s, color .2s;
+    cursor:default;
+  }
+  .skill-tag:hover{ border-color:var(--accent-green); color:var(--accent-green); }
 
   /* ---------- Projects (git log style) ---------- */
   .git-log{ position:relative; }
@@ -147,7 +284,7 @@
     position:absolute;
     top:26px; bottom:-36px;
     width:2px;
-    background:var(--border);
+    background:linear-gradient(to bottom, var(--accent-green) 0%, var(--border) 40%);
   }
   .commit:last-child .graph::before{ display:none; }
   .node{
@@ -156,109 +293,234 @@
     border:2px solid var(--accent-green);
     margin-top:6px;
     z-index:1;
+    transition:background .2s, box-shadow .2s;
+  }
+  .commit:hover .node{
+    background:var(--accent-green);
+    box-shadow:0 0 0 4px var(--accent-green-soft);
   }
   .commit-card{
     background:var(--bg-card);
     border:1px solid var(--border);
-    border-radius:10px;
-    padding:22px;
-    transition:border-color .2s, transform .2s;
+    border-radius:12px;
+    padding:24px;
+    transition:border-color .25s, transform .25s, box-shadow .25s;
   }
-  .commit-card:hover{ border-color:var(--accent-amber); transform:translateY(-2px); }
+  .commit-card:hover{
+    border-color:var(--accent-amber);
+    transform:translateY(-3px);
+    box-shadow:0 16px 40px -18px rgba(0,0,0,0.55);
+  }
   .commit-meta{
-    font-family:var(--mono); font-size:12px; color:var(--text-muted);
-    margin-bottom:10px;
+    display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+    font-family:var(--mono); font-size:12px; color:var(--text-dim);
+    margin-bottom:12px;
   }
   .commit-meta .hash{ color:var(--accent-amber); }
-  .commit-title{ font-size:19px; font-weight:700; margin-bottom:8px; }
-  .commit-desc{ color:var(--text-muted); font-size:15px; margin-bottom:16px; }
-  .commit-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+  .commit-meta .decoration{ color:var(--accent-green); }
+  .badge-featured{
+    font-family:var(--mono); font-size:11px;
+    color:var(--accent-amber); background:var(--accent-amber-soft);
+    border:1px solid rgba(232,163,61,0.3);
+    padding:2px 9px; border-radius:99px;
+    margin-left:auto;
+  }
+  .commit-title{ font-size:20px; font-weight:700; margin-bottom:8px; letter-spacing:-0.01em; }
+  .commit-desc{ color:var(--text-muted); font-size:15px; margin-bottom:16px; max-width:64ch; }
+  .commit-highlights{
+    list-style:none; margin:0 0 18px; display:grid; gap:6px;
+  }
+  .commit-highlights li{
+    font-size:14px; color:var(--text-muted);
+    padding-left:20px; position:relative;
+  }
+  .commit-highlights li::before{
+    content:'+'; position:absolute; left:0;
+    font-family:var(--mono); color:var(--accent-green); font-weight:600;
+  }
+  .commit-footer{
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:12px;
+    border-top:1px solid var(--border);
+    padding-top:16px;
+  }
+  .commit-tags{ display:flex; flex-wrap:wrap; gap:8px; }
   .commit-tags span{
     font-family:var(--mono); font-size:12px;
     padding:4px 10px; border-radius:5px;
-    background:rgba(111,167,135,0.12); color:var(--accent-green);
+    background:var(--accent-green-soft); color:var(--accent-green);
   }
   .commit-link{
-    display:inline-flex; align-items:center; gap:6px;
+    display:inline-flex; align-items:center; gap:7px;
     font-family:var(--mono); font-size:13px; color:var(--accent-amber);
-    border-bottom:1px solid transparent;
+    white-space:nowrap;
   }
-  .commit-link:hover{ border-bottom-color:var(--accent-amber); }
+  .commit-link svg{ transition:transform .2s; }
+  .commit-link:hover svg{ transform:translateX(3px); }
+  .commit-link:hover{ text-decoration:underline; text-underline-offset:4px; }
+
+  .projects-more{
+    margin-top:36px; text-align:center;
+  }
+  .projects-more a{
+    font-family:var(--mono); font-size:13px; color:var(--text-muted);
+    border:1px dashed var(--border); border-radius:8px;
+    padding:10px 20px; display:inline-block;
+    transition:color .2s, border-color .2s;
+  }
+  .projects-more a:hover{ color:var(--accent-amber); border-color:var(--accent-amber); }
 
   /* ---------- Contact ---------- */
-  .contact-terminal{ font-family:var(--mono); font-size:15px; }
-  .contact-terminal .line{ margin-bottom:10px; }
-  .contact-terminal a{ color:var(--accent-amber); }
-  .contact-terminal a:hover{ text-decoration:underline; }
-  .contact-key{ color:var(--text-muted); display:inline-block; width:96px; }
+  .contact-card{
+    background:var(--bg-terminal);
+    border:1px solid var(--border);
+    border-radius:12px;
+    overflow:hidden;
+  }
+  .contact-body{
+    padding:28px 24px;
+    font-family:var(--mono); font-size:14.5px;
+  }
+  .contact-body .line{ margin-bottom:14px; display:flex; align-items:center; flex-wrap:wrap; gap:4px; }
+  .contact-body .line:last-child{ margin-bottom:0; }
+  .contact-body a{ color:var(--accent-amber); }
+  .contact-body a:hover{ text-decoration:underline; text-underline-offset:4px; }
+  .contact-key{ color:var(--text-dim); display:inline-block; width:110px; flex-shrink:0; }
+  .contact-key::before{ content:'--'; margin-right:6px; color:var(--accent-green); }
+  .copy-btn{
+    font-family:var(--mono); font-size:11px;
+    background:none; border:1px solid var(--border); border-radius:5px;
+    color:var(--text-dim); padding:3px 10px; margin-left:10px;
+    cursor:pointer;
+    transition:color .2s, border-color .2s;
+  }
+  .copy-btn:hover{ color:var(--accent-green); border-color:var(--accent-green); }
+  .contact-note{
+    margin-top:26px; color:var(--text-muted); font-size:15px; font-family:var(--sans);
+    max-width:52ch;
+  }
 
   footer{
     border-top:1px solid var(--border);
-    padding:26px 0; text-align:center;
-    color:var(--text-muted); font-size:13px; font-family:var(--mono);
+    padding:28px 0;
+    color:var(--text-dim); font-size:13px; font-family:var(--mono);
   }
+  footer .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:10px;
+  }
+  footer a{ color:var(--text-muted); }
+  footer a:hover{ color:var(--accent-amber); }
 
+  /* ---------- Responsive ---------- */
+  @media (max-width:820px){
+    .hero-grid{ grid-template-columns:1fr; gap:36px; }
+    .about-grid{ grid-template-columns:1fr; gap:32px; }
+  }
   @media (max-width:640px){
-    .hero{ padding:60px 0 40px; }
-    .terminal-body{ font-size:13px; padding:20px 16px; }
-    .section-title{ font-size:22px; }
+    .hero{ padding:52px 0 48px; }
+    .terminal-body{ font-size:12.5px; padding:20px 16px; min-height:180px; }
+    .section-title{ font-size:23px; }
+    section{ padding:56px 0; }
     .commit{ grid-template-columns:20px 1fr; gap:14px; }
     .node{ width:11px; height:11px; }
-    nav ul{ gap:16px; }
-    .contact-key{ width:80px; }
+    nav a{ padding:6px 8px; font-size:12px; }
+    nav a.nav-cta{ margin-left:2px; }
+    .contact-key{ width:92px; }
+    .badge-featured{ margin-left:0; }
   }
 </style>
 </head>
 <body>
 
+<a class="skip-link" href="#about">Skip to content</a>
+
 <header>
   <div class="wrap">
-    <div class="logo"><span>~/</span><strong>bashar</strong></div>
-    <nav>
+    <a class="logo" href="#top" aria-label="Back to top"><span>~/</span><strong>bashar</strong></a>
+    <nav aria-label="Main navigation">
       <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">about</a></li>
+        <li><a href="#projects">projects</a></li>
+        <li><a href="#contact">contact</a></li>
+        <li><a class="nav-cta" href="https://github.com/Bashar-m" target="_blank" rel="noopener">github ↗</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="top">
   <!-- ============ Hero ============ -->
   <section class="hero">
     <div class="wrap">
-      <div class="terminal">
-        <div class="terminal-bar">
-          <span class="dot red"></span><span class="dot amber"></span><span class="dot green"></span>
-          <span class="terminal-title">bash — ~/portfolio</span>
+      <div class="hero-grid">
+        <div class="hero-intro">
+          <span class="status"><span class="pulse"></span>open to opportunities</span>
+          <h1>Backend systems that <em>hold up</em> in production.</h1>
+          <p class="sub">
+            I'm Bashar Al-Saleh — a backend developer working with
+            <code>Node.js</code>, <code>NestJS</code> and <code>PostgreSQL</code>,
+            focused on clean architecture and APIs that stay stable under real conditions.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">./view-projects.sh</a>
+            <a class="btn btn-ghost" href="#contact">ping me →</a>
+          </div>
         </div>
-        <div class="terminal-body" id="termBody"></div>
+        <div class="terminal" aria-label="Interactive terminal introduction">
+          <div class="terminal-bar">
+            <span class="dot red"></span><span class="dot amber"></span><span class="dot green"></span>
+            <span class="terminal-title">bash — ~/portfolio</span>
+          </div>
+          <div class="terminal-body" id="termBody"></div>
+        </div>
       </div>
-      <p class="hero-note">Scroll down for my projects — each one links straight to its GitHub repo.</p>
     </div>
   </section>
 
   <!-- ============ About ============ -->
   <section id="about" class="about">
     <div class="wrap">
-      <div class="section-head">
-        <span class="section-eyebrow">$ cat about.md</span>
+      <div class="section-head reveal">
+        <span class="section-eyebrow">cat about.md</span>
         <h2 class="section-title">About</h2>
       </div>
-      <p>I'm a backend developer and Informatics Engineering graduate, currently deepening my knowledge of software architecture — patterns, layering, and how to design systems that hold up as they grow.</p>
-      <p>I like building systems that stay stable under real conditions and code that's still easy to read months later. I'm always looking for new tools, patterns, and ideas worth learning.</p>
-      <div class="skills">
-        <span class="skill-tag">Node.js</span>
-        <span class="skill-tag">Express</span>
-        <span class="skill-tag">NestJS</span>
-        <span class="skill-tag">Prisma</span>
-        <span class="skill-tag">MongoDB</span>
-        <span class="skill-tag">PostgreSQL</span>
-        <span class="skill-tag">TypeScript</span>
-        <span class="skill-tag">REST APIs</span>
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">Git</span>
+      <div class="about-grid">
+        <div class="reveal">
+          <p>I'm a backend developer and <strong>Informatics Engineering graduate</strong>, currently deepening my knowledge of software architecture — patterns, layering, and how to design systems that hold up as they grow.</p>
+          <p>I like building systems that stay stable under real conditions and code that's <strong>still easy to read months later</strong>. I care about the boring things that make projects survive: clear boundaries between layers, proper error handling, and tests that catch regressions before users do.</p>
+          <p>Always looking for new tools, patterns, and ideas worth learning.</p>
+        </div>
+        <aside class="stack-card reveal" aria-label="Technical stack">
+          <h3>stack.yaml</h3>
+          <div class="stack-group">
+            <span class="stack-label">runtime &amp; frameworks</span>
+            <div class="skills">
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">NestJS</span>
+              <span class="skill-tag">Express</span>
+              <span class="skill-tag">TypeScript</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <span class="stack-label">data layer</span>
+            <div class="skills">
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">MongoDB</span>
+              <span class="skill-tag">Prisma</span>
+              <span class="skill-tag">Redis</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <span class="stack-label">tooling &amp; practices</span>
+            <div class="skills">
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">REST APIs</span>
+              <span class="skill-tag">JWT Auth</span>
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
@@ -266,32 +528,48 @@
   <!-- ============ Projects ============ -->
   <section id="projects">
     <div class="wrap">
-      <div class="section-head">
-        <span class="section-eyebrow">$ git log --oneline --graph</span>
+      <div class="section-head reveal">
+        <span class="section-eyebrow">git log --oneline --graph</span>
         <h2 class="section-title">Projects</h2>
       </div>
       <div class="git-log" id="gitLog"></div>
+      <div class="projects-more reveal">
+        <a href="https://github.com/Bashar-m?tab=repositories" target="_blank" rel="noopener">git fetch --all · more on GitHub →</a>
+      </div>
     </div>
   </section>
 
   <!-- ============ Contact ============ -->
   <section id="contact" class="contact">
     <div class="wrap">
-      <div class="section-head">
-        <span class="section-eyebrow">$ cat contact.txt</span>
+      <div class="section-head reveal">
+        <span class="section-eyebrow">cat contact.txt</span>
         <h2 class="section-title">Contact</h2>
       </div>
-      <div class="contact-terminal">
-        <div class="line"><span class="contact-key">GitHub</span>→ <a href="https://github.com/Bashar-m" target="_blank" rel="noopener">github.com/Bashar-m</a></div>
-        <div class="line"><span class="contact-key">LinkedIn</span>→ <a href="https://www.linkedin.com/in/bashar-alsaleh" target="_blank" rel="noopener">linkedin.com/in/bashar-alsaleh</a></div>
-        <div class="line"><span class="contact-key">Email</span>→ <a href="mailto:eng.bashar75@gmail.com">eng.bashar75@gmail.com</a></div>
+      <div class="contact-card reveal">
+        <div class="terminal-bar">
+          <span class="dot red"></span><span class="dot amber"></span><span class="dot green"></span>
+          <span class="terminal-title">contact — ssh bashar@anywhere</span>
+        </div>
+        <div class="contact-body">
+          <div class="line"><span class="contact-key">github</span><a href="https://github.com/Bashar-m" target="_blank" rel="noopener">github.com/Bashar-m</a></div>
+          <div class="line"><span class="contact-key">linkedin</span><a href="https://www.linkedin.com/in/bashar-alsaleh" target="_blank" rel="noopener">linkedin.com/in/bashar-alsaleh</a></div>
+          <div class="line">
+            <span class="contact-key">email</span><a href="mailto:eng.bashar75@gmail.com">eng.bashar75@gmail.com</a>
+            <button class="copy-btn" id="copyEmail" aria-label="Copy email address">copy</button>
+          </div>
+        </div>
       </div>
+      <p class="contact-note reveal">Have a backend problem worth solving, or a team that cares about clean architecture? My inbox is open.</p>
     </div>
   </section>
 </main>
 
 <footer>
-  © <span id="year"></span> Bashar Al-Saleh — built with HTML, CSS & JS
+  <div class="wrap">
+    <span>© <span id="year"></span> Bashar Al-Saleh</span>
+    <span>built with HTML, CSS &amp; JS — <a href="#top">back to top ↑</a></span>
+  </div>
 </footer>
 
 <script>
@@ -299,34 +577,57 @@
 
   /* ============================================================
      Edit only this array to update your projects.
-     Order = display order (top to bottom).
+     Order = display order (top to bottom). First = featured.
+     "highlights" is optional — 2-3 bullet points max.
      ============================================================ */
   const projects = [
     {
       hash: "4f2a9c1",
+      decoration: "(HEAD -> main)",
+      featured: true,
       title: "Pro Portfolio Service",
-      desc: "An enterprise-style backend for managing company portfolios. Built with NestJS and Prisma around a custom core library, with a dedicated auth system and centralized exception handling.",
+      desc: "An enterprise-style backend for managing company portfolios, built with NestJS and Prisma around a custom core library.",
+      highlights: [
+        "Custom core library shared across modules",
+        "Dedicated auth system with role-based access",
+        "Centralized exception handling and validation"
+      ],
       tags: ["NestJS", "Prisma", "TypeScript", "REST API"],
       link: "https://github.com/Bashar-m/Pro-Portfolio-Service"
     },
     {
       hash: "9d3e7b0",
+      decoration: "",
       title: "Task Manager API",
-      desc: "A task management backend designed around modularity and clean architecture. Uses Redis for caching, background job queues, and ships with Docker for easy deployment.",
+      desc: "A task management backend designed around modularity and clean architecture.",
+      highlights: [
+        "Redis caching and background job queues",
+        "Ships with Docker for one-command deployment"
+      ],
       tags: ["Node.js", "Express", "MongoDB", "Redis", "Docker"],
       link: "https://github.com/Bashar-m/task-manager-api"
     },
     {
       hash: "2c8f1a4",
+      decoration: "",
       title: "E-Commerce API",
-      desc: "A full REST API for an online store, with routes, services and models kept in separate layers, plus JWT-based authentication for protected endpoints.",
+      desc: "A full REST API for an online store with routes, services and models kept in cleanly separated layers.",
+      highlights: [
+        "JWT-based authentication for protected endpoints",
+        "Layered structure: routes → services → models"
+      ],
       tags: ["Node.js", "Express", "MongoDB", "JWT"],
       link: "https://github.com/Bashar-m/ecommerce-api"
     },
     {
       hash: "7b1d4e6",
+      decoration: "",
       title: "Real Estate API",
-      desc: "A REST API for managing property listings, including image uploads and scheduled background jobs for recurring maintenance tasks.",
+      desc: "A REST API for managing property listings end to end.",
+      highlights: [
+        "Image upload pipeline for listings",
+        "Scheduled background jobs for recurring maintenance"
+      ],
       tags: ["Node.js", "Express", "MongoDB"],
       link: "https://github.com/Bashar-m/real-estate-api"
     }
@@ -336,46 +637,103 @@
   const gitLog = document.getElementById('gitLog');
   projects.forEach(p => {
     const commit = document.createElement('div');
-    commit.className = 'commit';
+    commit.className = 'commit reveal';
+    const highlights = (p.highlights || []).map(h => `<li>${h}</li>`).join('');
     commit.innerHTML = `
       <div class="graph"><div class="node"></div></div>
       <div class="commit-card">
-        <div class="commit-meta"><span class="hash">commit ${p.hash}</span></div>
+        <div class="commit-meta">
+          <span class="hash">commit ${p.hash}</span>
+          ${p.decoration ? `<span class="decoration">${p.decoration}</span>` : ''}
+          ${p.featured ? `<span class="badge-featured">featured</span>` : ''}
+        </div>
         <div class="commit-title">${p.title}</div>
         <div class="commit-desc">${p.desc}</div>
-        <div class="commit-tags">${p.tags.map(t => `<span>${t}</span>`).join('')}</div>
-        <a class="commit-link" href="${p.link}" target="_blank" rel="noopener">→ View on GitHub</a>
+        ${highlights ? `<ul class="commit-highlights">${highlights}</ul>` : ''}
+        <div class="commit-footer">
+          <div class="commit-tags">${p.tags.map(t => `<span>${t}</span>`).join('')}</div>
+          <a class="commit-link" href="${p.link}" target="_blank" rel="noopener">
+            View on GitHub
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
       </div>
     `;
     gitLog.appendChild(commit);
   });
 
-  /* ---------- Hero typing effect ---------- */
+  /* ---------- Copy email ---------- */
+  const copyBtn = document.getElementById('copyEmail');
+  copyBtn.addEventListener('click', async () => {
+    try{
+      await navigator.clipboard.writeText('eng.bashar75@gmail.com');
+      copyBtn.textContent = 'copied ✓';
+      setTimeout(() => { copyBtn.textContent = 'copy'; }, 1800);
+    }catch(e){
+      copyBtn.textContent = 'ctrl+c ?';
+      setTimeout(() => { copyBtn.textContent = 'copy'; }, 1800);
+    }
+  });
+
+  /* ---------- Scroll reveal ---------- */
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls = document.querySelectorAll('.reveal');
+  if(reduceMotion || !('IntersectionObserver' in window)){
+    revealEls.forEach(el => el.classList.add('visible'));
+  }else{
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  }
+
+  /* ---------- Active nav highlight ---------- */
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  const sections = [...navLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if('IntersectionObserver' in window && sections.length){
+    const navIO = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => navIO.observe(s));
+  }
+
+  /* ---------- Hero typing effect ---------- */
   const termBody = document.getElementById('termBody');
   const heroLines = [
-    { prompt: '$ ', cmd: 'whoami', out: 'Bashar Al-Saleh' },
-    { prompt: '$ ', cmd: 'cat role.txt', out: 'Backend Developer · Informatics Engineering Graduate' },
-    { prompt: '$ ', cmd: 'cat currently-learning.txt', out: 'Software Architecture' },
+    { prompt: '$ ', cmd: 'whoami', out: 'Bashar Al-Saleh', plain: false },
+    { prompt: '$ ', cmd: 'cat role.txt', out: 'Backend Developer · Informatics Engineering Graduate', plain: false },
+    { prompt: '$ ', cmd: 'cat currently-learning.txt', out: 'Software Architecture', plain: false },
+    { prompt: '$ ', cmd: 'uptime', out: 'systems stable · code readable · coffee refilled', plain: true },
     { prompt: '$ ', cmd: './explore-portfolio.sh', out: null }
   ];
 
   function renderStatic(){
     termBody.innerHTML = heroLines.map(l => {
       let html = `<div class="line"><span class="prompt">${l.prompt}</span><span class="cmd">${l.cmd}</span></div>`;
-      if(l.out) html += `<div class="line out">${l.out}</div>`;
+      if(l.out) html += `<div class="line out${l.plain ? ' plain' : ''}">${l.out}</div>`;
       return html;
     }).join('') + '<span class="cursor"></span>';
   }
 
   async function typeLine(container, text, speed){
-    for(let i=0;i<=text.length;i++){
-      container.textContent = text.slice(0,i);
+    for(let i = 0; i <= text.length; i++){
+      container.textContent = text.slice(0, i);
       await new Promise(r => setTimeout(r, speed));
     }
   }
 
   async function typeHero(){
+    const cursor = document.createElement('span');
+    cursor.className = 'cursor';
     for(const l of heroLines){
       const cmdLine = document.createElement('div');
       cmdLine.className = 'line';
@@ -386,19 +744,21 @@
       cmdSpan.className = 'cmd';
       cmdLine.appendChild(promptSpan);
       cmdLine.appendChild(cmdSpan);
+      cmdLine.appendChild(cursor);
       termBody.appendChild(cmdLine);
-      await typeLine(cmdSpan, l.cmd, 45);
-      await new Promise(r => setTimeout(r, 250));
+      await typeLine(cmdSpan, l.cmd, 42);
+      await new Promise(r => setTimeout(r, 240));
       if(l.out){
         const outLine = document.createElement('div');
-        outLine.className = 'line out';
+        outLine.className = 'line out' + (l.plain ? ' plain' : '');
         termBody.appendChild(outLine);
-        await typeLine(outLine, l.out, 20);
-        await new Promise(r => setTimeout(r, 300));
+        outLine.appendChild(cursor);
+        const outSpan = document.createElement('span');
+        outLine.insertBefore(outSpan, cursor);
+        await typeLine(outSpan, l.out, 16);
+        await new Promise(r => setTimeout(r, 280));
       }
     }
-    const cursor = document.createElement('span');
-    cursor.className = 'cursor';
     termBody.appendChild(cursor);
   }
 

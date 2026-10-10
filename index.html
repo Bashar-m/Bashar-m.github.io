@@ -561,7 +561,7 @@
       decoration: "(HEAD -> main)",
       featured: true,
       title: "Al-Bashek International Company",
-      desc: "A full-stack platform for a medical and dental supplies company in Syria — a bilingual (Arabic/English) store, paid training courses, and an admin dashboard, built on NestJS, Prisma and Next.js.",
+      desc: "A paid freelance project, delivered to the client: a full-stack platform for a medical and dental supplies company in Syria — a bilingual (Arabic/English) store, paid training courses, and an admin dashboard, built on NestJS, Prisma and Next.js.",
       highlights: [
         "Bilingual content model (AR/EN) with RTL-first Next.js frontend and USD/SYP pricing that snapshots the exchange rate at checkout",
         "Pluggable payment providers (Sham Cash QR, cash on delivery, Stripe scaffolded) behind a single interface",
@@ -572,16 +572,30 @@
       link: "https://github.com/Bashar-m/Albashek-International-Company"
     },
     {
+      hash: "e7b2d94",
+      decoration: "",
+      title: "Attendance System",
+      desc: "A web system that replaced a paper attendance sheet and is now used by staff at Syr-o. Employees check in and out with one button; managers see the daily sheet, filter records with worked-hours totals, and correct mistakes.",
+      highlights: [
+        "Time comes from the server and identity only from the JWT, so nobody can forge a time or check in for a colleague",
+        "A unique index on employee + work day rejects duplicates atomically, even under double clicks and concurrent requests",
+        "Role-based access (admin / employee), rate-limited login, and deactivation that takes effect on the next request",
+        "Unit and end-to-end tests (Vitest, Supertest), a Postman collection for every route, and Arabic/English docs"
+      ],
+      tags: ["NestJS", "MongoDB", "TypeScript", "JWT", "Vitest"],
+      link: "https://github.com/Bashar-m/attendance-api"
+    },
+    {
       hash: "4f2a9c1",
       decoration: "",
       title: "Pro Portfolio Service",
       desc: "An enterprise-style backend for managing company portfolios, built with NestJS and Prisma around a custom core library.",
       highlights: [
         "Custom core library shared across modules",
-        "Dedicated auth system with role-based access",
+        "Dedicated auth system with role- and permission-based access (CASL)",
         "Centralized exception handling and validation"
       ],
-      tags: ["NestJS", "Prisma", "TypeScript", "REST API"],
+      tags: ["NestJS", "Prisma", "PostgreSQL", "CASL", "TypeScript"],
       link: "https://github.com/Bashar-m/Pro-Portfolio-Service"
     },
     {

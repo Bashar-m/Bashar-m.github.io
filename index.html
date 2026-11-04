@@ -3,11 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bashar Al-Saleh — Backend Developer</title>
-<meta name="description" content="Bashar Al-Saleh — Backend Developer. Node.js, NestJS, Prisma, PostgreSQL. Building APIs that stay stable under real conditions.">
-<meta property="og:title" content="Bashar Al-Saleh — Backend Developer">
+<title>Bachar M-Saleh — Backend Developer</title>
+<meta name="description" content="Bachar M-Saleh — Backend Developer. Node.js, NestJS, Prisma, PostgreSQL. Building APIs that stay stable under real conditions.">
+<meta name="author" content="Bachar M-Saleh">
+<link rel="canonical" href="https://bashar-m.github.io/">
+<meta property="og:title" content="Bachar M-Saleh — Backend Developer">
 <meta property="og:description" content="Node.js · NestJS · Prisma · PostgreSQL — APIs built to hold up as they grow.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://bashar-m.github.io/">
 <meta name="theme-color" content="#17181a">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>▸</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,11 +20,14 @@
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Bashar Al-Saleh",
+  "name": "Bachar M-Saleh",
+  "alternateName": ["Bashar Al-Saleh", "بشار محمدصالح"],
   "jobTitle": "Backend Developer",
   "email": "mailto:eng.bashar75@gmail.com",
-  "url": "https://github.com/Bashar-m",
-  "sameAs": ["https://github.com/Bashar-m", "https://www.linkedin.com/in/bashar-alsaleh"]
+  "telephone": "+963991122150",
+  "url": "https://bashar-m.github.io/",
+  "address": { "@type": "PostalAddress", "addressLocality": "Hama", "addressCountry": "SY" },
+  "sameAs": ["https://github.com/Bashar-m", "https://www.linkedin.com/in/bashar-alsaleh", "https://www.instagram.com/224r/"]
 }
 </script>
 <style>
@@ -149,10 +155,14 @@
     font-style:normal; color:var(--accent-amber);
   }
   .hero-intro .sub{
-    color:var(--text-muted); font-size:16px; max-width:44ch; margin-bottom:28px;
+    color:var(--text-muted); font-size:16px; max-width:44ch; margin-bottom:14px;
   }
   .hero-intro .sub code{
     font-family:var(--mono); font-size:14px; color:var(--accent-green);
+  }
+  .hero-intro .location{
+    font-family:var(--mono); font-size:13px; color:var(--text-dim);
+    margin-bottom:28px;
   }
   .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; }
   .btn{
@@ -227,6 +237,8 @@
   .about p{ color:var(--text-muted); font-size:16px; }
   .about p + p{ margin-top:16px; }
   .about p strong{ color:var(--text); font-weight:600; }
+  .about p a{ color:var(--accent-amber); }
+  .about p a:hover{ text-decoration:underline; text-underline-offset:4px; }
   .stack-card{
     background:var(--bg-card);
     border:1px solid var(--border);
@@ -254,6 +266,20 @@
     cursor:default;
   }
   .skill-tag:hover{ border-color:var(--accent-green); color:var(--accent-green); }
+  /* ---------- Experience ---------- */
+  .xp-list{ display:grid; gap:20px; }
+  .xp-head{
+    display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between;
+    gap:4px 16px; margin-bottom:4px;
+  }
+  .xp-role{ font-size:18px; font-weight:700; letter-spacing:-0.01em; }
+  .xp-date{ font-family:var(--mono); font-size:12px; color:var(--text-dim); white-space:nowrap; }
+  .xp-company{
+    font-family:var(--mono); font-size:13px; color:var(--accent-amber);
+    margin-bottom:14px;
+  }
+  .xp-company a:hover{ text-decoration:underline; text-underline-offset:4px; }
+  .xp-company .xp-place{ color:var(--text-dim); }
   /* ---------- Projects (git log style) ---------- */
   .git-log{ position:relative; }
   .commit{
@@ -311,6 +337,17 @@
     padding:2px 9px; border-radius:99px;
     margin-left:auto;
   }
+  .badge-live{
+    font-family:var(--mono); font-size:11px;
+    color:var(--accent-green); background:var(--accent-green-soft);
+    border:1px solid rgba(111,167,135,0.35);
+    padding:2px 9px; border-radius:99px;
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .badge-live::before{
+    content:''; width:6px; height:6px; border-radius:50%;
+    background:var(--accent-green);
+  }
   .commit-title{ font-size:20px; font-weight:700; margin-bottom:8px; letter-spacing:-0.01em; }
   .commit-desc{ color:var(--text-muted); font-size:15px; margin-bottom:16px; max-width:64ch; }
   .commit-highlights{
@@ -336,6 +373,7 @@
     padding:4px 10px; border-radius:5px;
     background:var(--accent-green-soft); color:var(--accent-green);
   }
+  .commit-links{ display:flex; flex-wrap:wrap; align-items:center; gap:18px; }
   .commit-link{
     display:inline-flex; align-items:center; gap:7px;
     font-family:var(--mono); font-size:13px; color:var(--accent-amber);
@@ -344,6 +382,7 @@
   .commit-link svg{ transition:transform .2s; }
   .commit-link:hover svg{ transform:translateX(3px); }
   .commit-link:hover{ text-decoration:underline; text-underline-offset:4px; }
+  .commit-note{ font-family:var(--mono); font-size:12px; color:var(--text-dim); }
   .projects-more{
     margin-top:36px; text-align:center;
   }
@@ -369,6 +408,7 @@
   .contact-body .line:last-child{ margin-bottom:0; }
   .contact-body a{ color:var(--accent-amber); }
   .contact-body a:hover{ text-decoration:underline; text-underline-offset:4px; }
+  .contact-body .sep{ color:var(--text-dim); margin:0 6px; }
   .contact-key{ color:var(--text-dim); display:inline-block; width:110px; flex-shrink:0; }
   .contact-key::before{ content:'--'; margin-right:6px; color:var(--accent-green); }
   .copy-btn{
@@ -406,8 +446,12 @@
     section{ padding:56px 0; }
     .commit{ grid-template-columns:20px 1fr; gap:14px; }
     .node{ width:11px; height:11px; }
+    nav ul{ gap:2px; }
     nav a{ padding:6px 8px; font-size:12px; }
     nav a.nav-cta{ margin-left:2px; }
+    nav .hide-sm{ display:none; }
+    .commit-card{ padding:20px 18px; }
+    .contact-body{ padding:24px 18px; font-size:13.5px; }
     .contact-key{ width:92px; }
     .badge-featured{ margin-left:0; }
   }
@@ -420,7 +464,8 @@
     <a class="logo" href="#top" aria-label="Back to top"><span>~/</span><strong>bashar</strong></a>
     <nav aria-label="Main navigation">
       <ul>
-        <li><a href="#about">about</a></li>
+        <li class="hide-sm"><a href="#about">about</a></li>
+        <li class="hide-sm"><a href="#experience">experience</a></li>
         <li><a href="#projects">projects</a></li>
         <li><a href="#contact">contact</a></li>
         <li><a class="nav-cta" href="https://github.com/Bashar-m" target="_blank" rel="noopener">github ↗</a></li>
@@ -437,13 +482,15 @@
           <span class="status"><span class="pulse"></span>open to opportunities</span>
           <h1>Backend systems that <em>hold up</em> in production.</h1>
           <p class="sub">
-            I'm Bashar Al-Saleh — a backend developer working with
+            I'm Bachar M-Saleh — a backend developer working with
             <code>Node.js</code>, <code>NestJS</code> and <code>PostgreSQL</code>,
             focused on clean architecture and APIs that stay stable under real conditions.
           </p>
+          <p class="location">Hama, Syria · open to relocation</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#projects">./view-projects.sh</a>
-            <a class="btn btn-ghost" href="#contact">ping me →</a>
+            <a class="btn btn-ghost" href="#contact">Contact me →</a>
+            <a class="btn btn-ghost" href="Bachar_M-Saleh_Backend_Engineer_CV_EN.pdf" download>Download CV ↓</a>
           </div>
         </div>
         <div class="terminal" aria-label="Interactive terminal introduction">
@@ -467,6 +514,7 @@
         <div class="reveal">
           <p>I'm a backend developer and <strong>Informatics Engineering graduate</strong>, currently deepening my knowledge of software architecture — patterns, layering, and how to design systems that hold up as they grow.</p>
           <p>I like building systems that stay stable under real conditions and code that's <strong>still easy to read months later</strong>. I care about the boring things that make projects survive: clear boundaries between layers, proper error handling, and tests that catch regressions before users do.</p>
+          <p>Most recently I built and deployed <a href="https://albasheksy.network/en" target="_blank" rel="noopener">albasheksy.network</a>, a bilingual store and courses platform that is <strong>now live in production</strong>. Before that I led day-to-day operations for a 6-person team at Silver Store while building its backend.</p>
           <p>Always looking for new tools, patterns, and ideas worth learning.</p>
         </div>
         <aside class="stack-card reveal" aria-label="Technical stack">
@@ -487,20 +535,79 @@
               <span class="skill-tag">PostgreSQL</span>
               <span class="skill-tag">MongoDB</span>
               <span class="skill-tag">Prisma</span>
+              <span class="skill-tag">Mongoose</span>
               <span class="skill-tag">Redis</span>
-            </div>
-          </div>
-          <div class="stack-group">
-            <span class="stack-label">tooling &amp; practices</span>
-            <div class="skills">
-              <span class="skill-tag">Docker</span>
-              <span class="skill-tag">Git</span>
-              <span class="skill-tag">REST APIs</span>
-              <span class="skill-tag">JWT Auth</span>
               <span class="skill-tag">BullMQ</span>
             </div>
           </div>
+          <div class="stack-group">
+            <span class="stack-label">security &amp; testing</span>
+            <div class="skills">
+              <span class="skill-tag">JWT Auth</span>
+              <span class="skill-tag">RBAC (CASL)</span>
+              <span class="skill-tag">Vitest</span>
+              <span class="skill-tag">Supertest</span>
+              <span class="skill-tag">Postman</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <span class="stack-label">deploy &amp; tooling</span>
+            <div class="skills">
+              <span class="skill-tag">Linux</span>
+              <span class="skill-tag">Nginx</span>
+              <span class="skill-tag">PM2</span>
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">REST APIs</span>
+            </div>
+          </div>
         </aside>
+      </div>
+    </div>
+  </section>
+  <!-- ============ Experience ============ -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-eyebrow">cat experience.log</span>
+        <h2 class="section-title">Experience</h2>
+      </div>
+      <div class="xp-list">
+        <article class="commit-card reveal">
+          <div class="xp-head">
+            <h3 class="xp-role">Backend Developer &amp; Launch Coordinator</h3>
+            <span class="xp-date">10/2026 – present</span>
+          </div>
+          <p class="xp-company">Syr-o <span class="xp-place">· e-commerce marketplace · Syria</span></p>
+          <ul class="commit-highlights">
+            <li>Built the internal attendance system staff now use instead of paper sign-in sheets (NestJS, MongoDB, JWT)</li>
+            <li>Covered it with unit and end-to-end tests and documented the API in Arabic and English</li>
+            <li>Wrote the platform's pre-launch guidelines and operating policies; manage the overall launch plan</li>
+          </ul>
+        </article>
+        <article class="commit-card reveal">
+          <div class="xp-head">
+            <h3 class="xp-role">Freelance Backend Developer</h3>
+            <span class="xp-date">07/2026 – 08/2026 · launched 11/2026</span>
+          </div>
+          <p class="xp-company"><a href="https://albasheksy.network/en" target="_blank" rel="noopener">Al-Bashek International Company</a> <span class="xp-place">· medical &amp; dental supplies · Hama, Syria</span></p>
+          <ul class="commit-highlights">
+            <li>Built the NestJS backend and Next.js front end of a bilingual store, paid-courses platform and admin dashboard</li>
+            <li>Deployed it to production when the client launched, then shipped post-launch features backed by integration and browser tests</li>
+          </ul>
+        </article>
+        <article class="commit-card reveal">
+          <div class="xp-head">
+            <h3 class="xp-role">Backend Engineer &amp; Team Lead</h3>
+            <span class="xp-date">12/2025 – 10/2026</span>
+          </div>
+          <p class="xp-company"><a href="https://silverstoreapp.com/" target="_blank" rel="noopener">Silver Store</a> <span class="xp-place">· e-commerce platform · Hama, Syria</span></p>
+          <ul class="commit-highlights">
+            <li>Built backend features and REST APIs for the web platform and its two mobile apps (customer and vendor)</li>
+            <li>Agreed API contracts with the mobile developer, shipped versioned releases (v1.0–v1.4) and resolved production issues</li>
+            <li>Coordinated day-to-day operations with a 6-person team and reported to management</li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
@@ -530,21 +637,24 @@
           <span class="terminal-title">contact — ssh bashar@anywhere</span>
         </div>
         <div class="contact-body">
-          <div class="line"><span class="contact-key">github</span><a href="https://github.com/Bashar-m" target="_blank" rel="noopener">github.com/Bashar-m</a></div>
-          <div class="line"><span class="contact-key">linkedin</span><a href="https://www.linkedin.com/in/bashar-alsaleh" target="_blank" rel="noopener">linkedin.com/in/bashar-alsaleh</a></div>
           <div class="line">
             <span class="contact-key">email</span><a href="mailto:eng.bashar75@gmail.com">eng.bashar75@gmail.com</a>
             <button class="copy-btn" id="copyEmail" aria-label="Copy email address">copy</button>
           </div>
+          <div class="line"><span class="contact-key">whatsapp</span><a href="https://wa.me/963991122150" target="_blank" rel="noopener">+963 991 122 150</a></div>
+          <div class="line"><span class="contact-key">linkedin</span><a href="https://www.linkedin.com/in/bashar-alsaleh" target="_blank" rel="noopener">linkedin.com/in/bashar-alsaleh</a></div>
+          <div class="line"><span class="contact-key">github</span><a href="https://github.com/Bashar-m" target="_blank" rel="noopener">github.com/Bashar-m</a></div>
+          <div class="line"><span class="contact-key">instagram</span><a href="https://www.instagram.com/224r/" target="_blank" rel="noopener">@224r</a><span class="sep">·</span><a href="https://www.instagram.com/nodex.group/" target="_blank" rel="noopener">@nodex.group</a></div>
+          <div class="line"><span class="contact-key">cv</span><a href="Bachar_M-Saleh_Backend_Engineer_CV_EN.pdf" download>English (PDF)</a><span class="sep">·</span><a href="Bachar_M-Saleh_Backend_Engineer_CV_AR.pdf" download>العربية (PDF)</a></div>
         </div>
       </div>
-      <p class="contact-note reveal">Have a backend problem worth solving, or a team that cares about clean architecture? My inbox is open.</p>
+      <p class="contact-note reveal">Have a backend problem worth solving, or a team that cares about clean architecture? Email or WhatsApp me — my inbox is open.</p>
     </div>
   </section>
 </main>
 <footer>
   <div class="wrap">
-    <span>© <span id="year"></span> Bashar Al-Saleh</span>
+    <span>© <span id="year"></span> Bachar M-Saleh</span>
     <span>built with HTML, CSS &amp; JS — <a href="#top">back to top ↑</a></span>
   </div>
 </footer>
@@ -553,7 +663,9 @@
   /* ============================================================
      Edit only this array to update your projects.
      Order = display order (top to bottom). First = featured.
-     "highlights" is optional — 2-3 bullet points max.
+     "highlights" is optional — 2-4 bullet points max.
+     "live" (site URL) and "link" (GitHub URL) are both optional;
+     "note" shows when a project has no public repo.
      ============================================================ */
   const projects = [
     {
@@ -561,15 +673,16 @@
       decoration: "(HEAD -> main)",
       featured: true,
       title: "Al-Bashek International Company",
-      desc: "A paid freelance project, delivered to the client: a full-stack platform for a medical and dental supplies company in Syria — a bilingual (Arabic/English) store, paid training courses, and an admin dashboard, built on NestJS, Prisma and Next.js.",
+      desc: "A paid freelance project, now live in production: a full-stack platform for a medical and dental supplies company in Syria — a bilingual (Arabic/English) store, paid training courses, and an admin dashboard, built on NestJS, Prisma and Next.js.",
       highlights: [
-        "Bilingual content model (AR/EN) with RTL-first Next.js frontend and USD/SYP pricing that snapshots the exchange rate at checkout",
-        "Pluggable payment providers (Sham Cash QR, cash on delivery, Stripe scaffolded) behind a single interface",
-        "Redis caching and rate limiting with an in-memory fallback, plus BullMQ queues for email, image processing and cleanup jobs",
-        "Atomic course-seat reservation, JWT auth with role guards, and email verification gating orders and enrollments"
+        "Bilingual content model (AR/EN) with an RTL-first Next.js frontend and USD/SYP pricing that snapshots the exchange rate at checkout",
+        "Pluggable payment providers (Sham Cash QR, cash on delivery, Stripe scaffolded) behind a single interface, plus atomic course-seat reservation",
+        "JWT auth with role guards and email verification, Redis caching and rate limiting, and BullMQ queues for email, images and cleanup",
+        "Deployed on an Ubuntu VPS behind Nginx with PM2, Let's Encrypt SSL, a firewall and nightly backups"
       ],
-      tags: ["NestJS", "Prisma", "PostgreSQL", "Next.js", "Redis", "BullMQ"],
-      link: "https://github.com/Bashar-m/Albashek-International-Company"
+      tags: ["NestJS", "Prisma", "PostgreSQL", "Next.js", "Redis", "BullMQ", "Nginx"],
+      live: "https://albasheksy.network/en",
+      note: "client project · private repo"
     },
     {
       hash: "e7b2d94",
@@ -599,6 +712,19 @@
       link: "https://github.com/Bashar-m/Pro-Portfolio-Service"
     },
     {
+      hash: "b6e0f52",
+      decoration: "",
+      title: "ARAM Real Estate Website",
+      desc: "A bilingual (Arabic/English, RTL-first) corporate website for a real-estate developer, exported as a fully static Next.js site.",
+      highlights: [
+        "Interactive building explorer that shows every level as a 2D plan or 3D view, with zoom, pinch and drag",
+        "On-demand PDF brochure viewer that loads only when opened and streams pages with HTTP range requests",
+        "Lighthouse 100 for accessibility, best practices and SEO on every page, checked from 320 px to 1920 px"
+      ],
+      tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      link: "https://github.com/Bashar-m/Aram-RealEstate-Development-Co"
+    },
+    {
       hash: "9d3e7b0",
       decoration: "",
       title: "Task Manager API",
@@ -625,28 +751,36 @@
     {
       hash: "7b1d4e6",
       decoration: "",
-      title: "Real Estate API",
-      desc: "A REST API for managing property listings end to end.",
+      title: "Maison Hub — Real Estate API",
+      desc: "A REST API for a real-estate listings platform, from sign-up to published listing.",
       highlights: [
-        "Image upload pipeline for listings",
-        "Scheduled background jobs for recurring maintenance"
+        "Map-based property search and OTP authentication",
+        "Admin approval of listings before they go public",
+        "Image processing pipeline and scheduled background jobs"
       ],
       tags: ["Node.js", "Express", "MongoDB"],
       link: "https://github.com/Bashar-m/real-estate-api"
     }
     // Add more projects the same way
   ];
+  const arrow = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   const gitLog = document.getElementById('gitLog');
   projects.forEach(p => {
     const commit = document.createElement('div');
     commit.className = 'commit reveal';
     const highlights = (p.highlights || []).map(h => `<li>${h}</li>`).join('');
+    const links = [
+      p.live ? `<a class="commit-link" href="${p.live}" target="_blank" rel="noopener">Visit live site ${arrow}</a>` : '',
+      p.link ? `<a class="commit-link" href="${p.link}" target="_blank" rel="noopener">View on GitHub ${arrow}</a>` : '',
+      p.note ? `<span class="commit-note">${p.note}</span>` : ''
+    ].join('');
     commit.innerHTML = `
       <div class="graph"><div class="node"></div></div>
       <div class="commit-card">
         <div class="commit-meta">
           <span class="hash">commit ${p.hash}</span>
           ${p.decoration ? `<span class="decoration">${p.decoration}</span>` : ''}
+          ${p.live ? `<span class="badge-live">live</span>` : ''}
           ${p.featured ? `<span class="badge-featured">featured</span>` : ''}
         </div>
         <div class="commit-title">${p.title}</div>
@@ -654,10 +788,7 @@
         ${highlights ? `<ul class="commit-highlights">${highlights}</ul>` : ''}
         <div class="commit-footer">
           <div class="commit-tags">${p.tags.map(t => `<span>${t}</span>`).join('')}</div>
-          <a class="commit-link" href="${p.link}" target="_blank" rel="noopener">
-            View on GitHub
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
+          <div class="commit-links">${links}</div>
         </div>
       </div>
     `;
@@ -707,10 +838,10 @@
   /* ---------- Hero typing effect ---------- */
   const termBody = document.getElementById('termBody');
   const heroLines = [
-    { prompt: '$ ', cmd: 'whoami', out: 'Bashar Al-Saleh', plain: false },
+    { prompt: '$ ', cmd: 'whoami', out: 'Bachar M-Saleh', plain: false },
     { prompt: '$ ', cmd: 'cat role.txt', out: 'Backend Developer · Informatics Engineering Graduate', plain: false },
+    { prompt: '$ ', cmd: 'curl -sI albasheksy.network', out: '200 OK · live in production', plain: true },
     { prompt: '$ ', cmd: 'cat currently-learning.txt', out: 'Software Architecture', plain: false },
-    { prompt: '$ ', cmd: 'uptime', out: 'systems stable · code readable · coffee refilled', plain: true },
     { prompt: '$ ', cmd: './explore-portfolio.sh', out: null }
   ];
   function renderStatic(){

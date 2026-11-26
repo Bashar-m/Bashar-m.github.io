@@ -715,14 +715,21 @@
       hash: "b6e0f52",
       decoration: "",
       title: "ARAM Real Estate Website",
-      desc: "A bilingual (Arabic/English, RTL-first) corporate website for a real-estate developer, exported as a fully static Next.js site.",
+      desc: "A bilingual (Arabic/English, RTL-first) corporate website for a real-estate developer, built as a fully static Next.js site and now live in production.",
       highlights: [
         "Interactive building explorer that shows every level as a 2D plan or 3D view, with zoom, pinch and drag",
         "On-demand PDF brochure viewer that loads only when opened and streams pages with HTTP range requests",
         "Lighthouse 100 for accessibility, best practices and SEO on every page, checked from 320 px to 1920 px"
       ],
       tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      live: "https://aram-construction.com/ar/",
       link: "https://github.com/Bashar-m/Aram-RealEstate-Development-Co"
+    },
+    {
+      title: "Aljajeh Group Website",
+      desc: "A corporate website for a footwear manufacturer in Hama, Syria, with a product catalog and Arabic and English content.",
+      tags: [],
+      live: "https://aljajeh.com/"
     },
     {
       hash: "9d3e7b0",
@@ -778,7 +785,7 @@
       <div class="graph"><div class="node"></div></div>
       <div class="commit-card">
         <div class="commit-meta">
-          <span class="hash">commit ${p.hash}</span>
+          ${p.hash ? `<span class="hash">commit ${p.hash}</span>` : ''}
           ${p.decoration ? `<span class="decoration">${p.decoration}</span>` : ''}
           ${p.live ? `<span class="badge-live">live</span>` : ''}
           ${p.featured ? `<span class="badge-featured">featured</span>` : ''}
@@ -787,7 +794,7 @@
         <div class="commit-desc">${p.desc}</div>
         ${highlights ? `<ul class="commit-highlights">${highlights}</ul>` : ''}
         <div class="commit-footer">
-          <div class="commit-tags">${p.tags.map(t => `<span>${t}</span>`).join('')}</div>
+          ${p.tags.length ? `<div class="commit-tags">${p.tags.map(t => `<span>${t}</span>`).join('')}</div>` : ''}
           <div class="commit-links">${links}</div>
         </div>
       </div>

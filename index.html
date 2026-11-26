@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,17 +17,18 @@
 <meta property="og:image:alt" content="Portrait of Bachar M-Saleh">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://bashar-m.github.io/bachar-og.jpg">
-<meta name="theme-color" content="#0a1315">
+<meta name="theme-color" content="#f3f8f7">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%2314b8a6'/><text x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-weight='700' font-size='28' fill='%23062a28'>BM</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <script>
-  /* Set the theme before paint so there is no flash */
+  /* Light is the default; a visitor's own choice (via the toggle) is remembered.
+     Set before paint so there is no flash. */
   (function(){
     var t = null;
     try{ t = localStorage.getItem('bm-theme'); }catch(e){}
-    if(!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    if(t !== 'dark') t = 'light';
     document.documentElement.setAttribute('data-theme', t);
   })();
 </script>
